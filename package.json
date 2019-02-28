@@ -1,0 +1,29 @@
+{
+	"name": "@mcansh/oxford-comma",
+	"version": "1.0.0",
+	"description": "Convert an array to an oxford comma string based on the Intl.ListFormat api",
+	"license": "MIT",
+	"repository": "mcansh/oxford-comma",
+	"author": "Logan McAnsh <logan@mcan.sh> (https://mcan.sh)",
+	"main": "dist",
+	"types": "dist",
+	"scripts": {
+		"lint": "eslint ./ --ext .ts --fix --quiet",
+		"build": "del dist && tsc",
+		"test": "npm run lint && jest",
+		"prepublishOnly": "npm run build"
+	},
+	"files": [
+		"dist"
+	],
+	"devDependencies": {
+		"@sindresorhus/tsconfig": "^0.2.0",
+		"@types/jest": "^24.0.9",
+		"del-cli": "^1.1.0",
+		"eslint": "^5.14.1",
+		"eslint-config-mcansh": "^1.1.0",
+		"jest": "^24.1.0",
+		"ts-jest": "^24.0.0",
+		"typescript": "^3.3.1"
+	}
+}
