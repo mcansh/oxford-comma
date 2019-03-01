@@ -1,6 +1,8 @@
 interface ListFormatOptions {
 	type?: 'conjunction' | 'disjunction' | 'unit';
 	style?: 'long' | 'short' | 'narrow';
+	conjunctionText?: string;
+	disjunctionText?: string;
 }
 
 function oxfordComma(
@@ -11,7 +13,12 @@ function oxfordComma(
 		throw new TypeError('oxfordComma expected an array');
 	}
 
-	const { style = 'long', type = 'conjunction' } = options;
+	const {
+		style = 'long',
+		type = 'conjunction',
+		conjunctionText = 'and',
+		disjunctionText = 'or',
+	} = options;
 
 	if (style === 'narrow' && type !== 'unit') {
 		throw new TypeError(
@@ -20,8 +27,8 @@ function oxfordComma(
 	}
 
 	const joiners = {
-		conjunction: 'and',
-		disjunction: 'or',
+		conjunction: conjunctionText,
+		disjunction: disjunctionText,
 		unit: '',
 	};
 

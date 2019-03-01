@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import oxfordComma from '../source';
+import oxfordComma, { ListFormatOptions } from '../source';
 
 describe('oxfordComma', () => {
 	it('throws an error if invalid args', () => {
@@ -60,6 +60,44 @@ describe('oxfordComma', () => {
 		expect(oxfordComma(['Motorcycle', 'Bus', 'Car'], { type: 'unit' })).toEqual(
 			'Motorcycle, Bus, Car'
 		);
+	});
+
+	it('works with custom conjunction', () => {
+		const conjunctionText = 'und';
+		expect(oxfordComma(['1', '2'], { conjunctionText })).toEqual(
+			`1 ${conjunctionText} 2`
+		);
+		expect(
+			oxfordComma(['Motorcycle', 'Bus', 'Car'], { conjunctionText })
+		).toEqual(`Motorcycle, Bus, ${conjunctionText} Car`);
+		expect(oxfordComma(['1', '2'], { style: 'short' })).toEqual('1 and 2');
+		expect(
+			oxfordComma(['Motorcycle', 'Bus', 'Car'], {
+				style: 'short',
+				conjunctionText,
+			})
+		).toEqual(`Motorcycle, Bus, ${conjunctionText} Car`);
+	});
+
+	it('works with custom disjunction', () => {
+		const options: ListFormatOptions = {
+			type: 'disjunction',
+			disjunctionText: 'oder',
+		};
+
+		expect(oxfordComma(['1', '2'], options)).toEqual(
+			`1 ${options.disjunctionText} 2`
+		);
+		expect(oxfordComma(['Motorcycle', 'Bus', 'Car'], options)).toEqual(
+			`Motorcycle, Bus, ${options.disjunctionText} Car`
+		);
+		expect(oxfordComma(['1', '2'], { style: 'short' })).toEqual('1 and 2');
+		expect(
+			oxfordComma(['Motorcycle', 'Bus', 'Car'], {
+				style: 'short',
+				...options,
+			})
+		).toEqual(`Motorcycle, Bus, ${options.disjunctionText} Car`);
 	});
 
 	it('throws an error when "narrow" is mixed with a type other than "unit"', () => {
