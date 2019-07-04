@@ -1,6 +1,6 @@
 {
   "name": "@mcansh/oxford-comma",
-  "version": "1.0.0",
+  "version": "1.0.0-canary.0",
   "description": "Convert an array to an oxford comma string based on the Intl.ListFormat api",
   "license": "MIT",
   "repository": "mcansh/oxford-comma",
