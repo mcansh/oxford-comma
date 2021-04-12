@@ -17,13 +17,13 @@
     "dist"
   ],
   "devDependencies": {
-    "@sindresorhus/tsconfig": "^0.2.0",
-    "@types/jest": "^24.0.9",
-    "del-cli": "^1.1.0",
-    "eslint": "^5.14.1",
-    "eslint-config-mcansh": "^1.1.0",
-    "jest": "^24.1.0",
-    "ts-jest": "^24.0.0",
-    "typescript": "^3.3.1"
+    "@sindresorhus/tsconfig": "^1.0.2",
+    "@types/jest": "^26.0.22",
+    "del-cli": "^3.0.1",
+    "eslint": "^7.24.0",
+    "eslint-config-mcansh": "^2.2.2",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.4",
+    "typescript": "^4.2.4"
   }
 }
